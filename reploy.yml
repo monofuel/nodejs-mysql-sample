@@ -20,8 +20,10 @@ services:
       - npm install
     serve:
       - node app.js
-  mongo:
+  mysql:
     image: mysql
     port: 3306
     do-not-expose: true
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: test
 

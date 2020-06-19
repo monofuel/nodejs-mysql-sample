@@ -1,0 +1,27 @@
+setup:
+  commands:
+    - cp seed.sql /docker-entrypoint-initdb.d/
+services:
+  frontend:
+    runtime: node
+    port: 3000
+    path: frontend
+    build:
+      - yarn install
+      - yarn build
+      - which react-scripts
+    serve:
+      - npx serve build/ -l 3000
+  backend:
+    runtime: node
+    port: 5000
+    path: backend
+    build:
+      - npm install
+    serve:
+      - node app.js
+  mongo:
+    image: mysql
+    port: 3306
+    do-not-expose: true
+

